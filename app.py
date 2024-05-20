@@ -24,11 +24,22 @@ class Internet_handler(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         self.title("iNetHandler")
-        self.geometry("300x150")
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        window_width = 300
+        window_height = 150
+        # Calculate x and y coordinates for the center
+        x_position = (screen_width // 2) - (window_width // 2)
+        y_position = (screen_height // 2) - (window_height // 2)
+        # Set the window geometry to the calculated position
+        self.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+
+
+
         self.after(201, lambda :self.iconbitmap(resource_path('icon.ico'))) 
         
 
-        self.resizable(True, False)
+        self.resizable(False, False)
         self.manual_refresh = False
         self.handler = Odin()
         self.application_running = True
